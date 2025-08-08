@@ -1,0 +1,225 @@
+# Chesster - Interactive Chess Game
+
+A Node.js TypeScript chess game that allows you to play against the Stockfish chess engine with an interactive CLI interface.
+
+## Features
+
+- 🎮 **Interactive CLI Interface** - Beautiful command-line interface with colored output
+- 🤖 **Stockfish Integration** - Play against the world's strongest chess engine
+- 🎯 **Multiple Game Modes**:
+  - New Game - Start a fresh game
+  - Continue Game - Enter existing moves and continue playing
+  - Gambit Mode - Play with predefined opening gambits
+- ♟️ **Top 10 Gambits** - Includes popular gambits like King's Gambit, Queen's Gambit, Evans Gambit, and more
+- 📊 **Game Information** - Real-time board display, move history, and evaluation
+- 🎨 **Beautiful Board Display** - Unicode chess pieces with colored squares
+- ⚡ **Move Validation** - Automatic validation of legal moves
+
+## Prerequisites
+
+- Node.js (v14 or higher)
+- Stockfish chess engine installed at: `C:\Program Files\stockfish\stockfish-windows-x86-64-avx2.exe`
+
+## Installation
+
+1. **Install Stockfish** (if not already installed):
+   - Download from: https://stockfishchess.org/download/
+   - Install to: `C:\Program Files\stockfish\stockfish-windows-x86-64-avx2.exe`
+   - Or update the path in `src/stockfish-engine.ts`
+
+2. **Install Dependencies** (using pnpm):
+   ```bash
+   pnpm install
+   ```
+
+3. **Build the Project**:
+   ```bash
+   pnpm run build
+   ```
+
+## Usage
+
+### Development Mode
+```bash
+pnpm run dev
+```
+
+### Production Mode
+```bash
+pnpm start
+```
+
+### Watch Mode (for development)
+```bash
+pnpm run watch
+```
+
+## Testing
+
+The project includes comprehensive tests for all components:
+
+### Run All Tests
+```bash
+pnpm test
+```
+
+### Run Tests in Watch Mode
+```bash
+pnpm run test:watch
+```
+
+### Run Tests with Coverage
+```bash
+pnpm run test:coverage
+```
+
+### Run Unit Tests Only
+```bash
+pnpm run test:unit
+```
+
+### Run Integration Tests Only
+```bash
+pnpm run test:integration
+```
+
+### Test Structure
+- **Unit Tests**: Test individual components in isolation
+  - `tests/unit/gambits.test.ts` - Gambit data and utilities
+  - `tests/unit/board-display.test.ts` - Board rendering
+  - `tests/unit/game-manager.test.ts` - Game logic
+- **Integration Tests**: Test component interactions
+  - `tests/integration/stockfish-engine.test.ts` - Stockfish engine communication
+
+### Quick Test
+To verify basic functionality without running the full test suite:
+```bash
+node test-game.js
+```
+
+## Game Modes
+
+### 1. New Game
+- Choose your color (White/Black/Random)
+- Play a complete game from the starting position
+
+### 2. Continue Game
+- Enter moves that have already been played
+- Continue the game from that position
+- Useful for analyzing ongoing games
+
+### 3. Gambit Mode
+- Choose from 10 popular chess gambits
+- Play aggressive opening lines
+- Available gambits:
+  - **White Gambits**: King's Gambit, Queen's Gambit, Evans Gambit, Blackmar-Diemer Gambit, Danish Gambit, Göring Gambit
+  - **Black Gambits**: Latvian Gambit, Benko Gambit, Budapest Gambit, From's Gambit
+
+## Controls
+
+- **Move Input**: Use standard algebraic notation (e.g., `e4`, `Nf3`, `O-O`, `e8=Q`)
+- **Exit**: Press `Ctrl+C` to exit the game
+- **Navigation**: Use arrow keys and Enter to navigate menus
+
+## Move Notation
+
+The game accepts standard algebraic notation:
+- `e4` - Pawn moves
+- `Nf3` - Knight moves
+- `Bxe5` - Bishop captures
+- `O-O` - Kingside castling
+- `O-O-O` - Queenside castling
+- `e8=Q` - Pawn promotion
+
+## Features
+
+### Board Display
+- Unicode chess pieces
+- Colored squares (yellow/gray)
+- Rotates based on player color
+- Shows current position and game state
+
+### Game Information
+- Current turn
+- Move number
+- Check/Checkmate status
+- Player and engine colors
+
+### Move History
+- Complete move history
+- Numbered moves
+- Easy to review
+
+### Legal Moves
+- Shows all legal moves for current position
+- Helps with move selection
+- Validates input
+
+### Engine Evaluation
+- Real-time position evaluation
+- Shows advantage in pawns
+- Mate sequences when available
+
+## Troubleshooting
+
+### Stockfish Not Found
+If you get a "Stockfish not found" error:
+1. Verify Stockfish is installed at the correct path
+2. Update the path in `src/stockfish-engine.ts` if needed
+3. Make sure the executable has proper permissions
+
+### Permission Issues
+If you get permission errors:
+1. Run as administrator
+2. Check file permissions on Stockfish executable
+3. Verify antivirus isn't blocking the process
+
+### Engine Move Issues
+If you get "Invalid move" or "Engine timeout" errors:
+1. The engine now properly converts UCI moves to algebraic notation
+2. Timeout has been reduced to 3 seconds for faster responses
+3. Engine depth is limited to 10 for quicker analysis
+4. If issues persist, try restarting the game
+
+### Build Errors
+If you get TypeScript compilation errors:
+1. Make sure all dependencies are installed: `pnpm install`
+2. Check TypeScript version: `pnpm exec tsc --version`
+3. Clear and rebuild: `pnpm run build`
+
+## Project Structure
+
+```
+chesster/
+├── src/
+│   ├── index.ts           # Main entry point
+│   ├── types.ts           # TypeScript type definitions
+│   ├── game-manager.ts    # Main game logic
+│   ├── stockfish-engine.ts # Stockfish integration
+│   ├── board-display.ts   # Board rendering
+│   └── gambits.ts         # Gambit definitions
+├── dist/                  # Compiled JavaScript
+├── package.json           # Dependencies and scripts
+├── tsconfig.json          # TypeScript configuration
+└── README.md             # This file
+```
+
+## Dependencies
+
+- **chess.js** - Chess game logic and move validation
+- **stockfish** - Stockfish engine integration
+- **inquirer** - Interactive CLI prompts
+- **chalk** - Colored console output
+- **cli-table3** - Table formatting
+
+## License
+
+MIT License - feel free to use and modify as needed.
+
+## Contributing
+
+Feel free to submit issues and enhancement requests!
+
+---
+
+**Enjoy playing chess against Stockfish! ♔♛** 
