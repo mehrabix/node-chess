@@ -48,6 +48,9 @@ export class GameManager {
       case 'gambit':
         await this.gambitGame();
         break;
+      case 'learning':
+        await this.learningGame();
+        break;
     }
   }
 
@@ -60,7 +63,8 @@ export class GameManager {
         choices: [
           { name: 'New Game', value: 'new' },
           { name: 'Continue Game (Enter moves)', value: 'continue' },
-          { name: 'Play Gambit', value: 'gambit' }
+          { name: 'Play Gambit', value: 'gambit' },
+          { name: 'Learning Mode (You control both colors)', value: 'learning' }
         ]
       }
     ]);
@@ -172,6 +176,92 @@ export class GameManager {
     }
 
     await this.playGame();
+  }
+
+  private async learningGame(): Promise<void> {
+    console.log(chalk.bold.green('🎓 Learning Mode Activated!'));
+    console.log(chalk.yellow('You control both colors. The engine will suggest the best move for each position.\n'));
+    
+    // Set up learning mode
+    this.gameState.learningMode = true;
+    this.gameState.playerColor = 'white'; // Doesn't matter in learning mode
+    this.gameState.engineColor = 'black'; // Doesn't matter in learning mode
+    
+    await this.playLearningGame();
+  }
+
+  private async playLearningGame(): Promise<void> {
+    console.clear();
+    
+    while (!this.gameState.chess.isGameOver()) {
+      BoardDisplay.displayBoard(this.gameState.chess, 'white');
+      BoardDisplay.displayGameInfo(this.gameState.chess, 'white', 'black');
+      BoardDisplay.displayMoveHistory(this.gameState.moveHistory);
+
+      const currentTurn = this.gameState.chess.turn() === 'w' ? 'white' : 'black';
+      
+      // Get engine suggestion first
+      await this.getEngineSuggestion();
+      
+      // Then let player make their move
+      await this.learningPlayerMove();
+    }
+
+    this.displayGameResult();
+  }
+
+  private async getEngineSuggestion(): Promise<void> {
+    const currentTurn = this.gameState.chess.turn() === 'w' ? 'white' : 'black';
+    console.log(chalk.yellow(`\n🤖 Engine analyzing position for ${currentTurn}...`));
+    
+    try {
+      await this.engine.setMoves(this.gameState.moveHistory);
+      const stockfishMove = await this.engine.getBestMove(10, 2000);
+      
+      console.log(chalk.bold.cyan(`💡 Best move for ${currentTurn}: ${stockfishMove.move}`));
+      console.log(chalk.gray(`   Score: ${stockfishMove.score} | Depth: ${stockfishMove.depth}`));
+      
+      // Show evaluation
+      if (stockfishMove.score > 100) {
+        console.log(chalk.green(`   ${currentTurn === 'white' ? 'White' : 'Black'} is winning`));
+      } else if (stockfishMove.score < -100) {
+        console.log(chalk.red(`   ${currentTurn === 'white' ? 'Black' : 'White'} is winning`));
+      } else {
+        console.log(chalk.yellow(`   Position is roughly equal`));
+      }
+      
+    } catch (error) {
+      console.log(chalk.red('Engine error:', error));
+    }
+  }
+
+  private async learningPlayerMove(): Promise<void> {
+    const currentTurn = this.gameState.chess.turn() === 'w' ? 'white' : 'black';
+    const legalMoves = this.gameState.chess.moves();
+    BoardDisplay.displayLegalMoves(this.gameState.chess);
+
+    const { move } = await inquirer.prompt([
+      {
+        type: 'input',
+        name: 'move',
+        message: `Your move for ${currentTurn}:`,
+        validate: (input: string) => {
+          if (!input.trim()) return 'Move cannot be empty';
+          if (!legalMoves.includes(input.trim())) {
+            return `Invalid move. Legal moves: ${legalMoves.join(', ')}`;
+          }
+          return true;
+        }
+      }
+    ]);
+
+    try {
+      this.gameState.chess.move(move.trim());
+      this.gameState.moveHistory.push(move.trim());
+      console.log(chalk.green(`You played: ${move.trim()}`));
+    } catch (error) {
+      console.log(chalk.red('Invalid move!'));
+    }
   }
 
   private async playGame(): Promise<void> {

@@ -115,6 +115,28 @@ node test-game.js
   - **White Gambits**: King's Gambit, Queen's Gambit, Evans Gambit, Blackmar-Diemer Gambit, Danish Gambit, Göring Gambit
   - **Black Gambits**: Latvian Gambit, Benko Gambit, Budapest Gambit, From's Gambit
 
+### 4. Learning Mode 🎓
+**Perfect for improving your chess skills!** In learning mode, you control both colors and the engine suggests the best move for each position.
+
+**Features:**
+- **Engine Analysis**: Get Stockfish's best move suggestion for every position
+- **Position Evaluation**: See if the position is winning, losing, or equal
+- **Learning Feedback**: Understand why certain moves are better than others
+- **Flexible Play**: Follow engine suggestions or play your own moves
+
+**How it works:**
+1. The engine analyzes the current position
+2. Shows you the best move with evaluation score
+3. Displays position assessment (winning/losing/equal)
+4. You choose your move (can follow engine suggestion or play your own)
+5. Repeat for each position
+
+**Perfect for:**
+- Learning optimal openings
+- Understanding middlegame strategy
+- Practicing tactical positions
+- Improving positional understanding
+
 ## Controls
 
 - **Move Input**: Use standard algebraic notation (e.g., `e4`, `Nf3`, `O-O`, `e8=Q`)

@@ -13,6 +13,7 @@ export interface GameState {
   engineColor: 'white' | 'black';
   selectedGambit?: Gambit;
   moveHistory: string[];
+  learningMode?: boolean;
 }
 
 export interface StockfishMove {
@@ -28,5 +29,5 @@ export interface MenuOption {
   description?: string;
 }
 
-export type GameMode = 'new' | 'continue' | 'gambit';
+export type GameMode = 'new' | 'continue' | 'gambit' | 'learning';
 export type ColorChoice = 'white' | 'black' | 'random'; 
