@@ -15,7 +15,9 @@
     "test:integration": "jest --testPathPattern=integration",
     "web:dev": "vite",
     "web:build": "vite build",
-    "web:preview": "vite preview"
+    "web:preview": "vite preview",
+    "start:all": "node start-chesster.js",
+    "setup": "node start-chesster.js"
   },
   "dependencies": {
     "chess.js": "^1.0.0-beta.6",

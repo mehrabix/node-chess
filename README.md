@@ -64,6 +64,10 @@ pnpm run watch
 
 ### Web UI Mode (New!)
 ```bash
+# Option 1: One-command startup (Recommended)
+pnpm run start:all
+
+# Option 2: Manual startup
 # Install dependencies (if not already done)
 pnpm install
 
@@ -76,6 +80,18 @@ pnpm run dev
 pnpm run web:dev
 
 # Open http://localhost:3000 in your browser
+```
+
+### Quick Start Scripts
+```bash
+# Windows
+start-chesster.bat
+
+# Unix/Linux/Mac
+./start-chesster.sh
+
+# Or use npm/pnpm
+pnpm run setup
 ```
 
 ### Build Web UI for Production

@@ -147,14 +147,14 @@ class StockfishEngine {
       const chess = new Chess()
       const uciMoves: string[] = []
       
-      moves.forEach(move => {
+      moves.forEach((move: string) => {
         try {
           const chessMove = chess.move(move)
           if (chessMove) {
             uciMoves.push(chessMove.from + chessMove.to + (chessMove.promotion || ''))
           }
-        } catch (error) {
-          console.error('Invalid move in history:', move)
+        } catch (error: unknown) {
+          console.error('Invalid move in history:', move, error)
         }
       })
       
@@ -216,10 +216,10 @@ app.post('/api/move', async (req, res) => {
     // Convert UCI move to algebraic notation
     const chess = new Chess()
     if (moves) {
-      moves.forEach(move => {
+      moves.forEach((move: string) => {
         try {
           chess.move(move)
-        } catch (error) {
+        } catch (error: unknown) {
           console.error('Invalid move:', move)
         }
       })
