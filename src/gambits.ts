@@ -63,7 +63,7 @@ export const GAMBITS: Gambit[] = [
     moves: ["f4", "e5"]
   },
   
-  // Top 10 Classical Openings
+  // Classical Openings
   {
     name: "Ruy Lopez (Spanish Opening)",
     description: "One of the oldest and most respected openings, focusing on central control and piece development",
@@ -123,6 +123,134 @@ export const GAMBITS: Gambit[] = [
     description: "An aggressive defense where Black immediately challenges the center",
     color: "black",
     moves: ["d4", "f5"]
+  },
+  
+  // Additional Openings from the list
+  {
+    name: "Alekhine Defense",
+    description: "A hypermodern defense where Black provokes White's pawns forward",
+    color: "black",
+    moves: ["e4", "Nf6"]
+  },
+  {
+    name: "Benoni Defense",
+    description: "A dynamic defense where Black creates an asymmetrical pawn structure",
+    color: "black",
+    moves: ["d4", "Nf6", "c4", "c5", "d5"]
+  },
+  {
+    name: "Bird Opening",
+    description: "An unusual opening where White immediately challenges the center with f4",
+    color: "white",
+    moves: ["f4"]
+  },
+  {
+    name: "Bogo-Indian Defense",
+    description: "A solid defense that avoids the complications of the Nimzo-Indian",
+    color: "black",
+    moves: ["d4", "Nf6", "c4", "e6", "Nf3", "Bb4+"]
+  },
+  {
+    name: "Catalan Opening",
+    description: "A sophisticated opening combining d4 and fianchetto",
+    color: "white",
+    moves: ["d4", "Nf6", "c4", "e6", "g3"]
+  },
+  {
+    name: "Grob Attack",
+    description: "An aggressive opening where White immediately attacks with g4",
+    color: "white",
+    moves: ["g4"]
+  },
+  {
+    name: "Grünfeld Defense",
+    description: "A dynamic defense where Black allows White's center and counterattacks",
+    color: "black",
+    moves: ["d4", "Nf6", "c4", "g6", "Nc3", "d5"]
+  },
+  {
+    name: "King's Indian Attack",
+    description: "A flexible system where White adopts a kingside fianchetto setup",
+    color: "white",
+    moves: ["Nf3", "d5", "g3"]
+  },
+  {
+    name: "King's Fianchetto",
+    description: "A solid opening where White develops with kingside fianchetto",
+    color: "white",
+    moves: ["g3"]
+  },
+  {
+    name: "London System",
+    description: "A solid opening system with early bishop development",
+    color: "white",
+    moves: ["d4", "Nf6", "Bf4"]
+  },
+  {
+    name: "Nimzowitsch-Larsen Attack",
+    description: "An unusual opening where White develops the queen's bishop early",
+    color: "white",
+    moves: ["b3"]
+  },
+  {
+    name: "Pirc Defense",
+    description: "A flexible defense where Black develops pieces before committing pawns",
+    color: "black",
+    moves: ["e4", "d6", "d4", "Nf6", "Nc3", "g6"]
+  },
+  {
+    name: "Polish Opening",
+    description: "An unusual opening where White plays b4 early",
+    color: "white",
+    moves: ["b4"]
+  },
+  {
+    name: "Réti Opening",
+    description: "A hypermodern opening that avoids immediate central pawn moves",
+    color: "white",
+    moves: ["Nf3", "d5", "c4"]
+  },
+  {
+    name: "Scandinavian Defense",
+    description: "A direct defense where Black immediately challenges the e4 pawn",
+    color: "black",
+    moves: ["e4", "d5"]
+  },
+  {
+    name: "Scotch Game",
+    description: "A direct opening where White immediately challenges the center",
+    color: "white",
+    moves: ["e4", "e5", "Nf3", "Nc6", "d4"]
+  },
+  {
+    name: "Sicilian Alapin",
+    description: "A solid approach to the Sicilian avoiding main line theory",
+    color: "white",
+    moves: ["e4", "c5", "c3"]
+  },
+  {
+    name: "Sicilian - Closed",
+    description: "A positional approach to the Sicilian with early d3",
+    color: "white",
+    moves: ["e4", "c5", "Nc3", "Nc6", "g3"]
+  },
+  {
+    name: "Slav Defense",
+    description: "A solid defense that maintains the d5 pawn",
+    color: "black",
+    moves: ["d4", "d5", "c4", "c6"]
+  },
+  {
+    name: "Spanish Opening",
+    description: "Another name for the Ruy Lopez, one of the most analyzed openings",
+    color: "white",
+    moves: ["e4", "e5", "Nf3", "Nc6", "Bb5"]
+  },
+  {
+    name: "Trompowsky Attack",
+    description: "An aggressive opening where White develops the bishop to h6",
+    color: "white",
+    moves: ["d4", "Nf6", "Bg5"]
   }
 ];
 

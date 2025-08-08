@@ -12,7 +12,7 @@ A Node.js TypeScript chess game that allows you to play against the Stockfish ch
   - Continue Game - Enter existing moves and continue playing
   - Gambit Mode - Play with predefined opening gambits
   - Learning Mode - Control both colors with engine suggestions
-- ♟️ **Top 20 Openings** - Includes popular gambits and classical openings
+- ♟️ **41 Chess Openings** - Includes popular gambits, classical openings, and modern defenses
 - 📊 **Game Information** - Real-time board display, move history, and evaluation
 - 🎨 **Beautiful Board Display** - Unicode chess pieces with colored squares
 - ⚡ **Move Validation** - Automatic validation of legal moves
@@ -154,11 +154,14 @@ node test-game.js
 - Useful for analyzing ongoing games
 
 ### 3. Gambit Mode
-- Choose from 10 popular chess gambits
-- Play aggressive opening lines
-- Available gambits:
-  - **White Gambits**: King's Gambit, Queen's Gambit, Evans Gambit, Blackmar-Diemer Gambit, Danish Gambit, Göring Gambit
-  - **Black Gambits**: Latvian Gambit, Benko Gambit, Budapest Gambit, From's Gambit
+- Choose from 41 popular chess openings and gambits
+- Play aggressive opening lines and classical openings
+- Available openings include:
+  - **Gambits**: King's Gambit, Queen's Gambit, Evans Gambit, Blackmar-Diemer, Latvian, Benko, Budapest, Danish, Göring, From's
+  - **Classical Openings**: Ruy Lopez, Italian Game, Sicilian Defense, French Defense, Caro-Kann, English Opening, Nimzo-Indian, Queen's Indian, King's Indian, Dutch Defense
+  - **Modern Openings**: Alekhine Defense, Benoni Defense, Bird Opening, Bogo-Indian, Catalan, Grünfeld Defense, King's Indian Attack, London System, Pirc Defense, Réti Opening, Scandinavian Defense, Scotch Game, Slav Defense, Trompowsky Attack
+  - **Sicilian Variations**: Sicilian Alapin, Sicilian - Closed
+  - **Unusual Openings**: Grob Attack, King's Fianchetto, Nimzowitsch-Larsen Attack, Polish Opening
 
 ### 4. Learning Mode 🎓
 **Perfect for improving your chess skills!** In learning mode, you control both colors and the engine suggests the best move for each position.
@@ -168,7 +171,7 @@ node test-game.js
 - **Position Evaluation**: See if the position is winning, losing, or equal
 - **Learning Feedback**: Understand why certain moves are better than others
 - **Flexible Play**: Follow engine suggestions or play your own moves
-- **📚 Opening Study**: Follow top 20 openings/gambits with guided learning
+- **📚 Opening Study**: Follow 41+ openings/gambits with guided learning
 
 **How it works:**
 1. Choose whether to follow a specific opening or play freely
@@ -179,9 +182,9 @@ node test-game.js
 6. Continue until game end
 
 **Available Openings for Study:**
-- **Gambits**: King's Gambit, Queen's Gambit, Evans Gambit, Blackmar-Diemer, Latvian, Benko, Budapest, Danish, Göring, From's
-- **Classical Openings**: Ruy Lopez, Italian Game, Sicilian Defense, French Defense, Caro-Kann, English Opening
-- **Modern Defenses**: Nimzo-Indian, Queen's Indian, King's Indian, Dutch Defense
+- **Gambits (10)**: King's Gambit, Queen's Gambit, Evans Gambit, Blackmar-Diemer, Latvian, Benko, Budapest, Danish, Göring, From's
+- **Classical Openings (10)**: Ruy Lopez, Italian Game, Sicilian Defense, French Defense, Caro-Kann, English Opening, Nimzo-Indian, Queen's Indian, King's Indian, Dutch Defense
+- **Modern Openings (21)**: Alekhine Defense, Benoni Defense, Bird Opening, Bogo-Indian, Catalan, Grünfeld Defense, King's Indian Attack, London System, Pirc Defense, Réti Opening, Scandinavian Defense, Scotch Game, Sicilian Alapin, Sicilian - Closed, Slav Defense, Trompowsky Attack, Grob Attack, King's Fianchetto, Nimzowitsch-Larsen Attack, Polish Opening
 
 **Perfect for:**
 - Learning optimal openings systematically
@@ -265,36 +268,3 @@ If you get TypeScript compilation errors:
 ## Project Structure
 
 ```
-chesster/
-├── src/
-│   ├── index.ts           # Main entry point
-│   ├── types.ts           # TypeScript type definitions
-│   ├── game-manager.ts    # Main game logic
-│   ├── stockfish-engine.ts # Stockfish integration
-│   ├── board-display.ts   # Board rendering
-│   └── gambits.ts         # Gambit definitions
-├── dist/                  # Compiled JavaScript
-├── package.json           # Dependencies and scripts
-├── tsconfig.json          # TypeScript configuration
-└── README.md             # This file
-```
-
-## Dependencies
-
-- **chess.js** - Chess game logic and move validation
-- **stockfish** - Stockfish engine integration
-- **inquirer** - Interactive CLI prompts
-- **chalk** - Colored console output
-- **cli-table3** - Table formatting
-
-## License
-
-MIT License - feel free to use and modify as needed.
-
-## Contributing
-
-Feel free to submit issues and enhancement requests!
-
----
-
-**Enjoy playing chess against Stockfish! ♔♛** 
