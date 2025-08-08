@@ -1,6 +1,7 @@
 import { Gambit } from './types';
 
 export const GAMBITS: Gambit[] = [
+  // Top 10 Gambits (existing)
   {
     name: "King's Gambit",
     description: "A classic attacking opening where White sacrifices a pawn for rapid development and attacking chances",
@@ -60,6 +61,68 @@ export const GAMBITS: Gambit[] = [
     description: "A rare gambit where Black sacrifices a pawn for quick development",
     color: "black",
     moves: ["f4", "e5"]
+  },
+  
+  // Top 10 Classical Openings
+  {
+    name: "Ruy Lopez (Spanish Opening)",
+    description: "One of the oldest and most respected openings, focusing on central control and piece development",
+    color: "white",
+    moves: ["e4", "e5", "Nf3", "Nc6", "Bb5"]
+  },
+  {
+    name: "Italian Game",
+    description: "A classic opening emphasizing rapid development and central control",
+    color: "white",
+    moves: ["e4", "e5", "Nf3", "Nc6", "Bc4"]
+  },
+  {
+    name: "Sicilian Defense",
+    description: "Black's most popular response to 1.e4, creating asymmetrical positions",
+    color: "black",
+    moves: ["e4", "c5"]
+  },
+  {
+    name: "French Defense",
+    description: "A solid defense where Black aims for a closed position with pawn structure advantages",
+    color: "black",
+    moves: ["e4", "e6"]
+  },
+  {
+    name: "Caro-Kann Defense",
+    description: "A solid defense that avoids the complications of the French Defense",
+    color: "black",
+    moves: ["e4", "c6"]
+  },
+  {
+    name: "English Opening",
+    description: "A flexible opening that can transpose into many other openings",
+    color: "white",
+    moves: ["c4"]
+  },
+  {
+    name: "Nimzo-Indian Defense",
+    description: "A hypermodern defense that focuses on piece activity over pawn structure",
+    color: "black",
+    moves: ["d4", "Nf6", "c4", "e6", "Nc3", "Bb4"]
+  },
+  {
+    name: "Queen's Indian Defense",
+    description: "A solid defense that aims for a balanced middlegame",
+    color: "black",
+    moves: ["d4", "Nf6", "c4", "e6", "Nf3", "b6"]
+  },
+  {
+    name: "King's Indian Defense",
+    description: "An aggressive defense where Black aims for a kingside attack",
+    color: "black",
+    moves: ["d4", "Nf6", "c4", "g6", "Nc3", "Bg7"]
+  },
+  {
+    name: "Dutch Defense",
+    description: "An aggressive defense where Black immediately challenges the center",
+    color: "black",
+    moves: ["d4", "f5"]
   }
 ];
 

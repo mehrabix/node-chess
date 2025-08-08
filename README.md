@@ -123,19 +123,27 @@ node test-game.js
 - **Position Evaluation**: See if the position is winning, losing, or equal
 - **Learning Feedback**: Understand why certain moves are better than others
 - **Flexible Play**: Follow engine suggestions or play your own moves
+- **📚 Opening Study**: Follow top 20 openings/gambits with guided learning
 
 **How it works:**
-1. The engine analyzes the current position
-2. Shows you the best move with evaluation score
-3. Displays position assessment (winning/losing/equal)
-4. You choose your move (can follow engine suggestion or play your own)
-5. Repeat for each position
+1. Choose whether to follow a specific opening or play freely
+2. If following an opening, the engine guides you through the best moves
+3. Shows expected moves and verifies they're legal
+4. Displays position assessment (winning/losing/equal)
+5. You choose your move (can follow suggestions or play your own)
+6. Continue until game end
+
+**Available Openings for Study:**
+- **Gambits**: King's Gambit, Queen's Gambit, Evans Gambit, Blackmar-Diemer, Latvian, Benko, Budapest, Danish, Göring, From's
+- **Classical Openings**: Ruy Lopez, Italian Game, Sicilian Defense, French Defense, Caro-Kann, English Opening
+- **Modern Defenses**: Nimzo-Indian, Queen's Indian, King's Indian, Dutch Defense
 
 **Perfect for:**
-- Learning optimal openings
-- Understanding middlegame strategy
+- Learning optimal openings systematically
+- Understanding opening theory and principles
 - Practicing tactical positions
 - Improving positional understanding
+- Studying specific opening lines
 
 ## Controls
 

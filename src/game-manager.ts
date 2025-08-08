@@ -182,12 +182,51 @@ export class GameManager {
     console.log(chalk.bold.green('🎓 Learning Mode Activated!'));
     console.log(chalk.yellow('You control both colors. The engine will suggest the best move for each position.\n'));
     
+    // Ask if user wants to follow a specific opening
+    const { followOpening } = await inquirer.prompt([
+      {
+        type: 'confirm',
+        name: 'followOpening',
+        message: 'Would you like to follow a specific opening/gambit for learning?',
+        default: false
+      }
+    ]);
+
+    if (followOpening) {
+      await this.selectLearningOpening();
+    }
+    
     // Set up learning mode
     this.gameState.learningMode = true;
     this.gameState.playerColor = 'white'; // Doesn't matter in learning mode
     this.gameState.engineColor = 'black'; // Doesn't matter in learning mode
     
     await this.playLearningGame();
+  }
+
+  private async selectLearningOpening(): Promise<void> {
+    console.log(chalk.bold.cyan('\n📚 Select an Opening/Gambit to Study:'));
+    console.log(chalk.gray('The engine will guide you through the best moves for this opening.\n'));
+
+    const { openingName } = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'openingName',
+        message: 'Choose an opening to study:',
+        choices: GAMBITS.map(g => ({
+          name: `${g.name} - ${g.description}`,
+          value: g.name
+        }))
+      }
+    ]);
+
+    const selectedOpening = GAMBITS.find(g => g.name === openingName);
+    if (selectedOpening) {
+      this.gameState.learningOpening = selectedOpening;
+      console.log(chalk.bold.green(`\n📖 Studying: ${selectedOpening.name}`));
+      console.log(chalk.yellow(`Description: ${selectedOpening.description}`));
+      console.log(chalk.cyan(`Moves: ${selectedOpening.moves.join(' ')}`));
+    }
   }
 
   private async playLearningGame(): Promise<void> {
@@ -214,6 +253,11 @@ export class GameManager {
     const currentTurn = this.gameState.chess.turn() === 'w' ? 'white' : 'black';
     console.log(chalk.yellow(`\n🤖 Engine analyzing position for ${currentTurn}...`));
     
+    // Show opening suggestion if following a specific opening
+    if (this.gameState.learningOpening) {
+      await this.showOpeningSuggestion();
+    }
+    
     try {
       await this.engine.setMoves(this.gameState.moveHistory);
       const stockfishMove = await this.engine.getBestMove(10, 2000);
@@ -232,6 +276,30 @@ export class GameManager {
       
     } catch (error) {
       console.log(chalk.red('Engine error:', error));
+    }
+  }
+
+  private async showOpeningSuggestion(): Promise<void> {
+    const opening = this.gameState.learningOpening!;
+    const moveIndex = this.gameState.moveHistory.length;
+    
+    if (moveIndex < opening.moves.length) {
+      const expectedMove = opening.moves[moveIndex];
+      const currentTurn = this.gameState.chess.turn() === 'w' ? 'white' : 'black';
+      
+      console.log(chalk.bold.magenta(`📚 ${opening.name} - Move ${moveIndex + 1}`));
+      console.log(chalk.cyan(`   Expected move for ${currentTurn}: ${expectedMove}`));
+      
+      // Check if the expected move is legal
+      const legalMoves = this.gameState.chess.moves();
+      if (legalMoves.includes(expectedMove)) {
+        console.log(chalk.green(`   ✅ This move is legal and follows the opening`));
+      } else {
+        console.log(chalk.yellow(`   ⚠️  This move is not legal in the current position`));
+      }
+    } else {
+      console.log(chalk.bold.magenta(`📚 ${opening.name} - Opening completed`));
+      console.log(chalk.gray(`   You've reached the end of the opening moves. Engine will suggest best continuations.`));
     }
   }
 

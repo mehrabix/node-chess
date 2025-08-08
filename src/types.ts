@@ -14,6 +14,7 @@ export interface GameState {
   selectedGambit?: Gambit;
   moveHistory: string[];
   learningMode?: boolean;
+  learningOpening?: Gambit;
 }
 
 export interface StockfishMove {
