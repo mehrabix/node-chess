@@ -4,16 +4,27 @@ A Node.js TypeScript chess game that allows you to play against the Stockfish ch
 
 ## Features
 
+### CLI Mode
 - 🎮 **Interactive CLI Interface** - Beautiful command-line interface with colored output
 - 🤖 **Stockfish Integration** - Play against the world's strongest chess engine
 - 🎯 **Multiple Game Modes**:
   - New Game - Start a fresh game
   - Continue Game - Enter existing moves and continue playing
   - Gambit Mode - Play with predefined opening gambits
-- ♟️ **Top 10 Gambits** - Includes popular gambits like King's Gambit, Queen's Gambit, Evans Gambit, and more
+  - Learning Mode - Control both colors with engine suggestions
+- ♟️ **Top 20 Openings** - Includes popular gambits and classical openings
 - 📊 **Game Information** - Real-time board display, move history, and evaluation
 - 🎨 **Beautiful Board Display** - Unicode chess pieces with colored squares
 - ⚡ **Move Validation** - Automatic validation of legal moves
+
+### Web UI Mode (New!)
+- 🌐 **Interactive Chess Board** - Drag and drop pieces with visual feedback
+- 🤖 **Real-time Engine Integration** - Get Stockfish suggestions instantly
+- 🎨 **Modern Interface** - Beautiful, responsive design
+- 📱 **Mobile Support** - Works on desktop and mobile devices
+- ⚡ **All CLI Features** - Complete feature parity with CLI version
+- 🔄 **Real-time Updates** - Live game state and move history
+- 📚 **Opening Study** - Visual guided learning for openings
 
 ## Prerequisites
 
@@ -39,19 +50,37 @@ A Node.js TypeScript chess game that allows you to play against the Stockfish ch
 
 ## Usage
 
-### Development Mode
+### CLI Mode (Original)
 ```bash
+# Development Mode
 pnpm run dev
-```
 
-### Production Mode
-```bash
+# Production Mode
 pnpm start
+
+# Watch Mode (for development)
+pnpm run watch
 ```
 
-### Watch Mode (for development)
+### Web UI Mode (New!)
 ```bash
-pnpm run watch
+# Install dependencies (if not already done)
+pnpm install
+
+# Start the backend server (in one terminal)
+cd server
+pnpm install
+pnpm run dev
+
+# Start the web UI (in another terminal)
+pnpm run web:dev
+
+# Open http://localhost:3000 in your browser
+```
+
+### Build Web UI for Production
+```bash
+pnpm run web:build
 ```
 
 ## Testing

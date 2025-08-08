@@ -1,0 +1,35 @@
+/* Additional App-specific styles */
+.app {
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.game-container {
+  margin-top: 2rem;
+}
+
+.chess-board {
+  margin: 0 auto;
+}
+
+.game-info {
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .game-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  
+  .chess-board {
+    margin: 0;
+  }
+  
+  .game-info {
+    margin-top: 0;
+    min-width: 300px;
+  }
+} 
